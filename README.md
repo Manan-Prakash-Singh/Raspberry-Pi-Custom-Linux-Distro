@@ -2,7 +2,7 @@
 
 The project deals with creating a minimal image for Raspberry Pi 3 that supports programming languages such as C/C++ and Python for Development and supports internet using Ethernet or Wifi. 
 
-The custom embedded Linux is made using the Yocto project. Detailed documentation can be found here. 
+The custom embedded Linux is made using the Yocto project. Detailed documentation can be found [here](https://docs.yoctoproject.org/index.html). 
 
 Pre-requisites for Ubuntu (Also works for Linux-Mint) - 
 ```
