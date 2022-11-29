@@ -58,6 +58,6 @@ bitbake core-image-minimal
 This process can take hours depending on your internet connection and host machine. When the process is done, the image can be find in build/tmp/deploy/image/raspberrypi3/
 
  
-
+Find core-image-minimal-raspberrypi3.wic.gz or core-image-minimal-raspberrypi3.wic.xz and use Balena Etcher to flash these images to SD card. Viola! You are done with your custom linux distro for Raspberry Pi. You can customize it further by modifying your local.conf file to suit your needs. Run bitbake core-image-minimal again after modification (It takes considerably less time after the first time you run bitbake)
 
 
