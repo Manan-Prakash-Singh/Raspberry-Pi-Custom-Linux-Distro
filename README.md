@@ -13,17 +13,51 @@ Pre-requisites for other linux distribution can be found here.
 
 After installing the pre-requisites, clone poky, which is a reference distribution provided by the Yocto Project 
 
+We use the dunfell branch in this project. 
+Poky alone isn't enough to make an image for Raspberry Pi. You need to add other layers that support Raspberry Pi Image creation. For more information about layers, refer to the documentation. 
+
+The following meta-layers are necessary for development of Raspberry Pi Linux Distribution -
 ```
 mkdir raspberry_image
 cd raspberry_image
 git clone -b dunfell git://git.yoctoproject.org/poky
-```
-We use the dunfell branch in this project. 
-
-Poky along isn't enough to make an image for Raspberry Pi. You need to add other layers that support Raspberry Pi Image creation. For more information about layers, refer to the documentation. 
-
-The following meta-layers are necessary for development of Raspberry Pi Linux Distribution -
-```
 git clone -b dunfell git://git.yoctoproject.org/meta-raspberrypi
 git clone -b dunfell git://git.yoctoproject.org/meta-openembedded
 ```
+
+change into poky and source the oe-init-build-env
+```
+cd poky
+source oe-init-build-env ../build
+```
+
+A build folder will be created in the raspberry_image document. Here is where the final image will be created. 
+
+cd into conf directory and replace the sample local.conf file with the local.conf given in this repository 
+
+Before you can begin making your image, you need to add your meta-layers into the bblayers.conf file. This can be easily done using bitbake. Use the following command to add layers to bblayers.conf
+```
+bitbake-layers add-layer /path/to/meta-layer (eg. /home/USER/raspberry_image/meta-raspberrypi/)
+```
+
+Use the above syntax to add the following layers - 
+1) meta-raspberrypi
+2) meta-oe (Found in meta-openembedded)
+3) meta-python
+4) meta-networking
+5) meta-multimedia
+
+Refer to the documentation to know more about how to add layers using bitbake. A sample bblayers.conf is attached for your reference.
+
+
+Finally, use bitbake to bake your image. 
+```
+bitbake core-image-minimal
+```
+
+This process can take hours depending on your internet connection and host machine. When the process is done, the image can be find in build/tmp/deploy/image/raspberrypi3/
+
+ 
+
+
+
